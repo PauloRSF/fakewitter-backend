@@ -1,0 +1,12 @@
+{
+  "type": "postgres",
+  "host": "fakewitter_db",
+  "port": 5432,
+  "username": "fakewitter",
+  "password": "f4k3w1773r",
+  "database": "fakewitter_db",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/modules/**/entities/*.ts"],
+  "migrations": ["src/modules/**/migrations/*.ts"]
+}
