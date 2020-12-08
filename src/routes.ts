@@ -1,10 +1,21 @@
-import { Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 import 'express-async-errors';
+
+import { APIError } from '@shared/errors/api-error';
 
 const router = Router();
 
-router.all('*', function (req, res) {
-  res.status(404).send({ detail: `${req.method} ${req.url}: not found` });
+router.all('*', function (req, _) {
+  throw new APIError(`${req.method} ${req.url}: not found`, 404, 'url_not_found');
+});
+
+router.use((err: Error, req: Request, res: Response, _: NextFunction) => {
+  if (err instanceof APIError) {
+    return res.status(err.statusCode).json({
+      message: err.message,
+      code: err.code
+    });
+  }
 });
 
 export default router;
