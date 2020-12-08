@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "author": "Paulo Renato (PauloRSF)",
   "scripts": {
-    "start": "yarn tsc && node build/index.js",
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
+    "start": "yarn tsc && node -r tsconfig-paths/register build/index.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/index.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
