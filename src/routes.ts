@@ -2,8 +2,11 @@ import { NextFunction, Request, Response, Router } from 'express';
 import 'express-async-errors';
 
 import { APIError } from '@shared/errors/api-error';
+import userRoutes from '@modules/users/infra/http/routes';
 
 const router = Router();
+
+router.use('/users', userRoutes);
 
 router.all('*', function (req, _) {
   throw new APIError(`${req.method} ${req.url}: not found`, 404, 'url_not_found');
