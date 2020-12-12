@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import 'express-async-errors';
 
-import { APIError } from '@shared/errors/api-error';
+import { APIError } from '@shared/errors/apiError';
 import userRoutes from '@modules/users/infra/http/routes';
 
 const router = Router();
